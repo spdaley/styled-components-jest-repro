@@ -56,10 +56,41 @@ yarn bench:compare
 Provide:
 
 1. Node version (`node -v`)
+   Node 22.14.0
 2. OS info
+   MacOS Sequoia
 3. Output from `yarn bench:compare` on both versions
-4. Any CPU profiles captured with:
 
-```bash
-NODE_OPTIONS="--cpu-prof --cpu-prof-dir=./tmp/profiles" yarn test:single
+With 6.2.0 I get:
+```
+baseline
+  runs: 10
+  median: 0.741s
+  min: 0.726s
+  max: 1.258s
+
+SC_DISABLE_GLOBAL_STYLE_MOCK=1
+  runs: 10
+  median: 0.725s
+  min: 0.715s
+  max: 0.767s
+
+median delta: 0.016s (2.1%)
+```
+
+With 6.3.9 I get:
+```
+baseline
+  runs: 10
+  median: 0.976s
+  min: 0.964s
+  max: 1.435s
+
+SC_DISABLE_GLOBAL_STYLE_MOCK=1
+  runs: 10
+  median: 0.730s
+  min: 0.723s
+  max: 0.748s
+
+median delta: 0.246s (25.2%)
 ```
