@@ -1,0 +1,32 @@
+{
+  "name": "styled-components-jest-repro",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Minimal reproduction project for styled-components Jest/jsdom performance regression",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node ./node_modules/.bin/jest --runInBand --coverage=false",
+    "test:single": "node ./node_modules/.bin/jest --runInBand --no-cache --coverage=false test/regression.spec.jsx -t 'renders heavy styled tree'",
+    "test:single:no-global": "SC_DISABLE_GLOBAL_STYLE_MOCK=1 node ./node_modules/.bin/jest --runInBand --no-cache --coverage=false test/regression.spec.jsx -t 'renders heavy styled tree'",
+    "bench": "node ./scripts/benchmark.cjs",
+    "bench:compare": "node ./scripts/benchmark.cjs --compare",
+    "set:sc:620": "yarn add styled-components@6.2.0",
+    "set:sc:639": "yarn add styled-components@6.3.9"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "styled-components": "6.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.28.5",
+    "@babel/preset-env": "7.28.5",
+    "@babel/preset-react": "7.28.5",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.0",
+    "babel-jest": "30.2.0",
+    "jest": "30.2.0",
+    "jest-environment-jsdom": "30.2.0"
+  }
+}
